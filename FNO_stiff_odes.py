@@ -41,7 +41,7 @@ config.tex_template = TexTemplate(
 )
 
 
-class FNO_architecture_1d(MovingCameraScene):
+class FNO_stiff_odes(MovingCameraScene):
     def construct(self):
         # Set camera orientation for better viewing
         # self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES)
@@ -56,7 +56,11 @@ class FNO_architecture_1d(MovingCameraScene):
         k_max = 3
         d_output = 4
         self.camera.background_color = WHITE
-        nome = Tex("Luca Pellegrini (Unipv/USI)", font_size=10).to_edge(DOWN + LEFT)
+        nome = (
+            Tex("Luca Pellegrini (PhD Student Unipv/USI)", font_size=10)
+            .to_edge(DOWN + LEFT)
+            .shift(0.5 * DOWN)
+        )
 
         image = ImageMobject("titolo_bianco.png")
 
@@ -650,7 +654,7 @@ class FNO_architecture_1d(MovingCameraScene):
         )
         arrow_fourier.next_to(text_kernel_FNO[5], DOWN)
         text_fourier = Tex(
-            r"Parametrixed by a Matrix", color=color_fourier, font_size=text_font
+            r"Parametrized by a Matrix", color=color_fourier, font_size=text_font
         )
         text_fourier.next_to(arrow_fourier, DOWN)
 
@@ -700,8 +704,6 @@ class FNO_architecture_1d(MovingCameraScene):
             # Create(rectangle_how_to_train),
             # Create(text_dataset),
             # Create(text_min),
-        )
-        self.play(
             FadeOut(NO_split),
             FadeOut(integral_op),
             FadeOut(text_kernel_FNO),
@@ -916,7 +918,7 @@ class FNO_architecture_1d(MovingCameraScene):
         self.wait(10)
 
         text_FHN = Tex(r"FitzHugh-Nagumo", font_size=text_font)
-        text_HH = Tex(r"Hodking-Huxley", font_size=text_font)
+        text_HH = Tex(r"Hodgkin-Huxley", font_size=text_font)
         # text_HH.next_to(rectangle_which_model, 2 * DOWN)
         # text_FHN.next_to(text_HH, 4 * LEFT)
         text_ORd = Tex(r"O'Hara-Rudy", font_size=text_font)
